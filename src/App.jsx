@@ -4,6 +4,8 @@ import { useState } from "react";
 import Navbar from "./components/layout/navbar";
 import Footer from "./components/layout/footer";
 
+import { Analytics } from "@vercel/analytics/next"
+
 // Section Components
 import Hero from "./components/sections/hero";
 import SponsorsSection from "./components/sections/sponsors";
@@ -60,16 +62,18 @@ export default function App() {
   return (
     <>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-      
-      <Navbar 
-        onOpenSchedule={goToSchedule} 
+
+      <Analytics />
+
+      <Navbar
+        onOpenSchedule={goToSchedule}
         onOpenSpeakers={goToSpeakers}
         onOpenTeam={goToTeam}
         onOpenAbout={goToAbout}
         onNavigate={goToHome}
         currentPage={currentPage}
       />
-      
+
       {currentPage === "home" && (
         <main>
           <Hero />
@@ -99,9 +103,9 @@ export default function App() {
 
       <Footer />
 
-      <SpeakerModal 
-        speaker={selectedSpeaker} 
-        onClose={() => setSelectedSpeaker(null)} 
+      <SpeakerModal
+        speaker={selectedSpeaker}
+        onClose={() => setSelectedSpeaker(null)}
       />
     </>
   );
